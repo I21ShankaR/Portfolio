@@ -100,16 +100,20 @@
 
 
     // Portfolio isotope and filter
-    var portfolioIsotope = $('.portfolio-container').isotope({
-        itemSelector: '.portfolio-item',
-        layoutMode: 'fitRows'
-    });
-    $('#portfolio-flters li').on('click', function () {
-        $("#portfolio-flters li").removeClass('active');
-        $(this).addClass('active');
+    var $galleryContainer = $('.gallery').isotope({
+		itemSelector: '.item',
+  		layoutMode: 'fitRows'
+	})
 
-        portfolioIsotope.isotope({filter: $(this).data('filter')});
-    });
+	$('.button-group .button').on('click', function(){
+		$('.button-group .button').removeClass('active');
+		$(this).addClass('active');
+
+		var value = $(this).attr('data-filter');
+		$galleryContainer.isotope({
+			filter: value 
+		})
+	})
 
 
     // Testimonials carousel
